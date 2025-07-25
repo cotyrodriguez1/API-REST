@@ -1,23 +1,12 @@
-const Sequelize = require("sequelize");
-const parameters = require("./config/config");
-const UsuarioModel = require("./models/usuario");
+const db = require("./models"); //importamos los modelos
 
-const sequelize = new Sequelize(
-  parameters.database,
-  parameters.username,
-  parameters.password,
-  {
-    host: parameters.host,
-    dialect: parameters.dialect
-  }
-);
+//sincroniza y crea las tablas especificadas en el modelo
+db.sequelize.sync({force: false}) //force: true lo que hace es resetear los registros de las tablas en la base de datos cada vez que se ejecute el script
+    .then(()=>{
+        console.log("Sincronización exitosa!!!");
+    })
+    .catch((error) => {
+        console.error("Falló la sincro", error);
+    })
 
-const Usuario = UsuarioModel(sequelize, Sequelize);
-
-sequelize.sync({ force: true })
-  .then(() => {
-    console.log("Sincronización exitosa!!!!");
-  })
-  .catch((error) => {
-    console.error("Fallo la sincronización", error);
-  });
+    
