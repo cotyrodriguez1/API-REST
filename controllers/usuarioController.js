@@ -89,7 +89,7 @@ const login = async (req, res) => {
             id: usuario.id,
             nombre: usuario.nombre,
             mail: usuario.mail
-        }, process.env.JWT_SECRET, { expiresIn: 180 }); //añade la clave secreta y la expiración
+        }, process.env.JWT_SECRET, { expiresIn: 380 }); //añade la clave secreta y la expiración
 
         //responde con el token:
         res.status(200).send({ 

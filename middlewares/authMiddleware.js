@@ -1,21 +1,24 @@
-const jwt = require("jsonwebtoken");//importamos el token
+const jwt = require("jsonwebtoken");
 
-const auth = (req, res, next) => { //toma next para ejecutar la proxima función
-    const token = req.header("Authorization");
-    //verifica si el token existe
-    if (!token) {
+const auth = (req, res, next) => {
+    const authHeader = req.header("Authorization");
+
+    if (!authHeader) {
         return res.status(401).send({ message: "No hay token" });
     }
 
+    const token = authHeader.startsWith("Bearer")
+        ? authHeader.replace("Bearer ", "").trim()
+        : authHeader.trim();
+
     try {
-        //decodifica el token
-        const verified = jwt.verify(token, process.env.JWT_SECRET); //usa la funcion de jwt para verificar el token
-        req.user = verified; //agregar la información del usuario al objeto `req`
-        next(); // Pasar al siguiente middleware o controlador
+        const verified = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = verified;
+        next();
     } catch (error) {
-        res.status(400).send({ 
+        res.status(400).send({
             message: "Token no válido",
-            details: error.message 
+            info: error.message
         });
     }
 };
