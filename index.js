@@ -1,9 +1,8 @@
+require("dotenv").config();
 const express = require("express"); //se importa el paquete de express
 const bodyParser = require("body-parser"); //se importa el paquete de body parser
 const app = express() //se crea la aplicación de express
 const PORT = 3000;
-
-require('dotenv').config();
 
 
 const usuarioRouter = require("./routes/usuarioRoutes");//importamos las rutas de usuario en el index

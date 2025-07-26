@@ -10,3 +10,4 @@ const parameters = {
 
 //exportamos la configuración 
 module.exports = parameters;
+
