@@ -1,7 +1,6 @@
-const db = require("../models"); //importamos los archivos del modelo
-const Usuario = db.usuario // se crea el objeto usuario para tener acceso al modelo del ORM para interactuar con la base de datos
+const db = require("../models"); 
+const Usuario = db.usuario //
 const bcrypt = require('bcryptjs');
-//importa el bcrypt para encriptar 
 const jwt = require("jsonwebtoken");//importa le generador de token
 
 //funcion para la ruta principal de usuario

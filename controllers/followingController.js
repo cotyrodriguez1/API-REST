@@ -1,6 +1,6 @@
-const db = require("../models"); //importamos los archivos del modelo
-const Following = db.Following//se crea el objeto following para tener acceso al modelo del ORM para interactuar con la base de datos
-const Usuario = db.usuario//se crea el objeto usuario par tener acceso en la base de datos 
+const db = require("../models"); 
+const Following = db.Following
+const Usuario = db.usuario
 
 //funcion para crear una nueva relación de seguimiento
 const createFollow = async (req, res) => {

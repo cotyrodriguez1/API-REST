@@ -1,8 +1,7 @@
-
-const db = require("../models"); //importamos los archivos del modelo
+const db = require("../models"); 
 const Usuario = db.usuario;
-const Post = db.Post // se crea el objeto Post para tener acceso al modelo del ORM para interactuar con la base de datos
-const Following = db.Following // se crea el objeto Following para tener acceso al modelo
+const Post = db.Post 
+const Following = db.Following 
 
 //funcion para la ruta principal de post
 const home = (req, res) =>{
